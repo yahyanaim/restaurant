@@ -1,73 +1,104 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import SectionHeading from "@/components/common/SectionHeading";
+import DishCard from "@/components/common/DishCard";
+import CTAButton from "@/components/common/CTAButton";
+import InfoCard from "@/components/common/InfoCard";
+import { featuredDishes } from "@/data";
 
 export const dynamic = "force-static";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <Header />
+    <div className="bg-sand-50">
       
-      <main className="mx-auto max-w-6xl px-6 py-12">
-        {/* Hero Section */}
-        <section className="mb-16 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
+      {/* Hero Section */}
+      <section className="relative bg-sand-200 py-20 lg:py-32 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-dark mb-6 tracking-tight">
             Welcome to Wingy
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600">
-            Experience authentic flavors and warm hospitality in the heart of our community
+          <p className="text-xl md:text-2xl text-sand-900 mb-10 max-w-2xl mx-auto">
+            Experience authentic Moroccan flavors and warm hospitality in the heart of our community.
           </p>
-        </section>
-
-        {/* Quick Info Cards */}
-        <div className="grid gap-8 md:grid-cols-2">
-          <section className="rounded-2xl border border-zinc-200 bg-white p-6">
-            <h2 className="text-xl font-semibold text-zinc-900">Operating Hours</h2>
-            <ul className="mt-3 space-y-2 text-zinc-700">
-              <li className="flex justify-between">
-                <span className="font-medium">Monday - Thursday</span>
-                <span>11:00am - 9:00pm</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="font-medium">Friday - Saturday</span>
-                <span>11:00am - 10:00pm</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="font-medium">Sunday</span>
-                <span>12:00pm - 8:00pm</span>
-              </li>
-            </ul>
-            <div className="mt-4 pt-4 border-t border-zinc-200">
-              <p className="text-sm text-zinc-600">
-                Open 365 days a year. Perfect for any occasion!
-              </p>
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-zinc-200 bg-white p-6">
-            <h2 className="text-xl font-semibold text-zinc-900">Visit Us</h2>
-            <div className="mt-3 space-y-2">
-              <p className="text-zinc-700">123 Main Street</p>
-              <p className="text-zinc-700">Your City, State 12345</p>
-              <p className="text-zinc-700">
-                <a 
-                  href="tel:+1555555555" 
-                  className="hover:text-zinc-900 transition-colors"
-                >
-                  (555) 555-5555
-                </a>
-              </p>
-            </div>
-            <div className="mt-4 pt-4 border-t border-zinc-200">
-              <p className="text-sm text-zinc-600">
-                Call ahead for large groups and special events!
-              </p>
-            </div>
-          </section>
+          <div className="flex justify-center space-x-4">
+            <CTAButton href="/menu" variant="primary">
+              View Menu
+            </CTAButton>
+            <CTAButton href="/reservation" variant="outline">
+              Book a Table
+            </CTAButton>
+          </div>
         </div>
-      </main>
-      
-      <Footer />
+        {/* Decorative background element could go here */}
+      </section>
+
+      {/* Featured Dishes Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading 
+            title="Our Featured Dishes" 
+            subtitle="Taste the Tradition"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredDishes.map((dish) => (
+              <DishCard key={dish.id} dish={dish} />
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <CTAButton href="/menu" variant="secondary">
+              See Full Menu
+            </CTAButton>
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-16 bg-sand-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading 
+            title="Visit Us" 
+            subtitle="We'd love to see you"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <InfoCard title="Opening Hours" icon={<span>🕒</span>}>
+               <ul className="space-y-2">
+                <li className="flex justify-between">
+                  <span className="font-medium">Monday - Friday</span>
+                  <span>11:00 AM - 10:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="font-medium">Saturday - Sunday</span>
+                  <span>10:00 AM - 11:00 PM</span>
+                </li>
+              </ul>
+              <div className="mt-4 pt-4 border-t border-sand-300">
+                <p className="text-sm">
+                  Open 365 days a year. Perfect for any occasion!
+                </p>
+              </div>
+            </InfoCard>
+
+            <InfoCard title="Location" icon={<span>📍</span>}>
+              <div className="space-y-2">
+                <p>123 Spice Market Rd</p>
+                <p>Marrakesh, Morocco</p>
+                <p className="mt-4">
+                  <a href="tel:+212524123456" className="text-primary hover:text-primary-dark transition-colors font-medium">
+                    +212 524 123 456
+                  </a>
+                </p>
+              </div>
+              <div className="mt-4 pt-4 border-t border-sand-300">
+                <p className="text-sm">
+                  Call ahead for large groups and special events!
+                </p>
+              </div>
+            </InfoCard>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
