@@ -7,5 +7,5 @@
 }
 
 body {
-  @apply bg-white text-zinc-900 antialiased;
+  /* Colors are set in layout.tsx via utility classes */
 }
