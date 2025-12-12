@@ -1,5 +1,4 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import React from 'react';
 
 export const metadata = {
   title: "Contact - Wingy Restaurant", 
@@ -9,9 +8,8 @@ export const metadata = {
 export default function Contact() {
   return (
     <div className="min-h-screen bg-zinc-50">
-      <Header />
       
-      <main className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         {/* Page Header */}
         <section className="mb-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
@@ -211,9 +209,8 @@ export default function Contact() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
       
-      <Footer />
     </div>
   );
 }
