@@ -23,7 +23,7 @@ export default function Home() {
             <CTAButton href="/menu" variant="primary">
               View Menu
             </CTAButton>
-            <CTAButton href="/reservation" variant="outline">
+            <CTAButton href="/contact" variant="outline">
               Book a Table
             </CTAButton>
           </div>
